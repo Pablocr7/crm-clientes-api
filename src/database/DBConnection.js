@@ -1,15 +1,14 @@
-const mongoose = require("mongoose")
-
-const uri = "mongodb://127.0.0.1:27017/crm-cliente"
+const mongoose = require("mongoose");
+const config = require("../config");
 
 const DBConnection = async()=>{
     try{
-        await mongoose.connect(uri)
-        console.log("DB is connected")
+        await mongoose.connect(config.mongoUri);
+        console.log("DB is connected");
     } catch(error) {
-        console.log(error)
-        throw new Error("Failed to initialize database")
+        console.log(error);
+        throw new Error("Failed to initialize database");
     }
-}
+};
 
 module.exports = DBConnection;
